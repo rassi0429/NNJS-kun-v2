@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    restart: always
+    environment:
+      - DISCORD_TOKEN=
+      - OPENAI_API_KEY=
+      - DISCORD_CHANNEL=
+      - GAS_URL=
