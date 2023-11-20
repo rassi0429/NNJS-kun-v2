@@ -1,3 +1,4 @@
+from math import e
 import os
 import discord
 import requests
@@ -113,9 +114,9 @@ async def generate_reply(user_prompt, message):
     if match:
         await generateReplyWithImage(match, user_prompt, message)
         return
-
-    await message.reply(reply)
-    return
+    else:
+        await message.reply(reply)
+        return
 
 async def generateReplyWithImage(match, user_prompt, message):
     prefix = ""
@@ -165,10 +166,10 @@ async def generate_reply_with_ref(prompt, message):
     if match:
         await generateReplyWithImage(match, prompt[-1].content, message)
         return
-
-    print(reply[:10], response.usage.total_tokens)
-    await message.reply(reply)
-    return
+    else:
+        print(reply[:10], response.usage.total_tokens)
+        await message.reply(reply)
+        return
 
 # Set up a loop to periodically update the sysprompt
 async def update_sysprompt_periodically():
